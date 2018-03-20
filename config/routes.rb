@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'advertisers/index'
+  get 'advertisers/index' => 'advertisers#index'
+  
+  get 'products/index'=> 'products#index'
 
-  get 'products/index'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'products/import' => 'products#import'
 end
