@@ -1,4 +1,5 @@
 class Product < ApplicationRecord  
-  has_and_belongs_to_many :advertisers
+  has_many :skus
+  has_many :advertisers, through: :skus
   validates :name, presence: true
 end
