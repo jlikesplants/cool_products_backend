@@ -8,6 +8,6 @@ namespace :import do
   task :csv, [:file] => :environment do |t, args|
     file = args[:file]
     importer = SeedImporter.new(file)
-    importer.import
+    importer.import_csv
   end
 end
