@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController  
   def index
-    @products = Product.get_products_with_ad_sku
+    @products = Product.get_product_data
     render json: @products
   end
   
