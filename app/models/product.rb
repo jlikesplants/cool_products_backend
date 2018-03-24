@@ -4,7 +4,8 @@ class Product < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   
   def self.get_product_data
-    product_data = Product.joins(:skus).joins(:advertisers).pluck("products.id, products.name, advertisers.name, skus.sku")
+    sql = "select skus.id, products.name, advertisers.name, skus.sku from products join skus on skus.product_id = products.id join advertisers on advertisers.id = skus.advertiser_id"
+    product_data = ActiveRecord::Base.connection.execute(sql)
     
     results = []
     product_data.each do |entry| 
@@ -20,3 +21,4 @@ class Product < ApplicationRecord
     results
   end
 end
+
