@@ -1,18 +1,22 @@
 require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
-  test 'should save with name and sku' do
-    product = Product.new(name: 'Cool new product', sku: '00ddd123')
-    assert product.save
+  def setup
+    @product = products(:one)
   end
   
-  test 'should not save product without name' do
-    product = Product.new
-    assert_not product.save
+  test 'valid product' do
+    assert @product.valid?
   end
   
-  test 'should not save product without sku' do
-    product = Product.new
-    assert_not product.save
+  test 'invalid without name' do
+    @product.name = nil
+    assert_not @product.valid?
   end
+  
+  test 'invalid with dup name' do
+    dup = products(:two)
+    dup.name = @product.name
+    assert_not dup.valid?
+  end  
 end

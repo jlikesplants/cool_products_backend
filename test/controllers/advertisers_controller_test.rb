@@ -5,5 +5,4 @@ class AdvertisersControllerTest < ActionDispatch::IntegrationTest
     get advertisers_index_url
     assert_response :success
   end
-
 end
