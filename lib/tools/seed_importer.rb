@@ -1,5 +1,4 @@
 class SeedImporter 
-  require 'csv'
   require 'activerecord-import'
   require 'smarter_csv'
 
